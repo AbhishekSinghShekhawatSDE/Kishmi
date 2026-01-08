@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kishmi | Official Links</title>
+    
+    <!-- Professional Font: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+    <style>
+        /* --- Root Variables for Easy Customization --- */
+        :root {
+            --brand-color: #3A4D8F;
+            --background-color: #FCEFF1; /* Kishmi Pink Theme */
+            --tile-color: #FFFFFF;
+            --primary-text: #1a1a1a;
+            --secondary-text: #5c5c5c;
+            --shadow-light: rgba(60, 60, 90, 0.07);
+            --shadow-hover: rgba(60, 60, 90, 0.15);
+        }
+
+        /* --- Global Styles & Background --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            background-color: var(--background-color);
+            /* Add a subtle texture or gradient if desired */
+            background-image: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+            color: var(--primary-text);
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            /* Entrance Animation */
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .container.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Header: Logo, Title & Bio --- */
+        .header {
+            margin-bottom: 25px;
+        }
+
+        .logo {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--brand-color);
+            margin: 0 0 15px 0;
+            letter-spacing: -1px;
+        }
+        
+        .bio {
+            font-size: 1rem;
+            color: var(--secondary-text);
+            max-width: 450px;
+            line-height: 1.6;
+            margin: 0 auto;
+        }
+        
+        .divider {
+            height: 1px;
+            width: 80px;
+            background-color: rgba(0,0,0,0.1);
+            margin: 30px auto;
+        }
+
+        /* --- Social Media Icons --- */
+        .socials {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px; /* Increased gap */
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            color: var(--secondary-text);
+            text-decoration: none;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .social-icon svg {
+            width: 28px; /* Slightly larger */
+            height: 28px;
+            fill: currentColor;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: var(--brand-color);
+        }
+
+        /* --- Links: The Glass Tiles --- */
+        .links-container {
+            display: grid;
+            gap: 15px;
+        }
+
+        .link-tile {
+            background: var(--tile-color);
+            border-radius: 18px;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            
+            padding: 18px 20px;
+            text-decoration: none;
+            color: var(--primary-text);
+            font-size: 1rem;
+            font-weight: 500;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            /* THIS IS THE NEW TILE-SPECIFIC INTERACTIVITY */
+            will-change: transform;
+            transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        box-shadow 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Interactive hover effect for desktop */
+        .link-tile:hover {
+            transform: translateY(-5px) scale(1.03);
+            box-shadow: 0 10px 30px var(--shadow-hover);
+        }
+        
+        /* Interactive touch effect for mobile */
+        .link-tile:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 5px 15px var(--shadow-hover);
+        }
+        
+        /* --- Footer --- */
+        .footer {
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
+        /* START: Add this CSS */
+        
+        /* This makes the "pop" effect work on mobile tap */
+        .link-tile:active {
+            transform: translateY(-2px) scale(0.98);
+            box-shadow: 0 5px 15px var(--shadow-hover);
+        }
+        
+        /* --- Footer Styles --- */
+        .footer {
+            margin-top: 50px;
+            padding-bottom: 20px;
+        }
+
+        .footer-quote {
+            font-size: 0.95rem;
+            font-style: italic;
+            color: var(--secondary-text);
+            max-width: 400px;
+            margin: 0 auto 20px auto;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            font-size: 0.8rem;
+            color: var(--secondary-text);
+        }
+
+        .footer-links a {
+            color: var(--secondary-text);
+            text-decoration: none;
+            margin: 0 5px;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--brand-color);
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+
+    <main class="container" id="main-container">
+    
+        <!-- Header Section -->
+        <header class="header">
+            <img src="assets/logo.jpg" alt="Kishmi Logo" class="logo">
+            <h1 class="title">Kishmi</h1>
+            <p class="bio">
+                Kishmi offers beauty, cosmetics & personal care products designed to restore, rejuvenate & radiate, bringing out your natural glow every day.
+            </p>
+        </header>
+
+        <!-- Social Icons Section -->
+        <section class="socials">
+            <!-- Website -->
+            <a href="http://kishmi.com" target="_blank" class="social-icon" title="Website">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+            </a>
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/mykishmi" target="_blank" class="social-icon" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+            </a>
+            <!-- X (Twitter) -->
+            <a href="https://x.com/mykishmi" target="_blank" class="social-icon" title="X">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" target="_blank" class="social-icon" title="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5.77 12.44c-.22.82-1.04 1.44-1.87 1.44H8.1c-.83 0-1.65-.62-1.87-1.44-.31-1.16-.31-3.68 0-4.88.22-.82 1.04-1.44 1.87-1.44h7.8c.83 0 1.65.62 1.87 1.44.31 1.2.31 3.72 0 4.88zM10 9.75v4.5l4-2.25-4-2.25z"/></svg>
+            </a>
+        </section>
+        
+        <!-- Links Section -->
+        <section class="links-container">
+            <a href="http://kishmi.com" target="_blank" class="link-tile">Website</a>
+            <a href="https://www.instagram.com/mykishmi" target="_blank" class="link-tile">Instagram</a>
+            <!-- START: Add these two lines -->
+            <a href="#" target="_blank" class="link-tile">Facebook</a>
+            
+            <!-- END: Add these two lines -->
+            <a href="https://x.com/mykishmi" target="_blank" class="link-tile">X (Twitter)</a>
+            <a href="#" target="_blank" class="link-tile">YouTube</a>
+            <a href="https://wa.me/919549801666" target="_blank" class="link-tile">WhatsApp</a>
+            <a href="#" target="_blank" class="link-tile">Google Business Profile</a>
+        </section>
+
+        <!-- START: Replace your footer with this -->
+        <footer class="footer">
+            <p class="footer-quote">"Restore, rejuvenate & radiate, bringing out your natural glow every day."</p>
+            <div class="footer-links">
+                <a href="#">Report</a>
+                <span>&middot;</span>
+                <a href="#">Privacy</a>
+            </div>
+        </footer>
+        <!-- END: Replacement footer -->
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainContainer = document.getElementById('main-container');
+            
+            // Graceful entrance animation for the whole page
+            setTimeout(() => {
+                mainContainer.classList.add('loaded');
+            }, 100);
+        });
+    </script>
+</body>
+</html>
